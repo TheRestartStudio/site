@@ -194,35 +194,19 @@ body {
 }
 
 .content-section {
-  max-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0;
   overflow: hidden;
 }
-@media (min-width: 2500px) {
-  .content-section {
-    padding: 10rem 0;
-  }
-}
-@media (max-width: 2500px) {
-  .content-section {
-    padding: 5rem 0;
-  }
-}
-@media (max-width: 1600px) {
-  .content-section {
-    padding-bottom: 10rem;
-  }
-}
+
 .bg {
   position: absolute;
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -245,10 +229,62 @@ body {
   width: 100%;
 }
 
+.ui-element {
+  animation: slideInRight 1s ease-out;
+  transition: all 0.3s ease;
+  z-index: 2;
+  pointer-events: auto;
+  width: 20rem;
+}
+@media (min-width: 1920px) {
+  .ui-element {
+    width: 35rem;
+  }
+}
+@media (min-width: 1600px) {
+  .ui-element {
+    width: 40rem;
+    position: absolute;
+    right: -5rem;
+    bottom: 0;
+  }
+}
+@media (max-width: 1600px) {
+  .ui-element {
+    width: 37rem;
+    position: absolute;
+    right: -5rem;
+    bottom: 0;
+  }
+}
+@media (max-width: 1000px) {
+  .ui-element {
+    width: 25rem;
+    right: 0;
+    bottom: -7rem;
+  }
+}
+@media (max-width: 600px) {
+  .ui-element {
+    width: 27rem;
+  }
+}
+
 .content-text {
   position: relative;
   z-index: 3;
   animation: slideInLeft 1s ease-out;
+  padding: 5rem 0;
+}
+@media (max-width: 2500px) {
+  .content-text {
+    padding: 5rem 0;
+  }
+}
+@media (max-width: 1600px) {
+  .content-text {
+    padding: 5rem 0;
+  }
 }
 @media (min-width: 1000px) {
   .content-text {
@@ -257,12 +293,14 @@ body {
 }
 @media (max-width: 1000px) {
   .content-text {
-    max-width: 90%;
+    max-width: 95%;
+    padding: 7rem 0 10rem 0;
   }
 }
 @media (max-width: 600px) {
   .content-text {
-    max-width: 95%;
+    max-width: 100%;
+    padding: 7rem 0 15rem 0;
   }
 }
 .content-text h2 {
@@ -275,6 +313,11 @@ body {
 .content-text h2 span {
   color: #b64848;
 }
+@media (min-width: 1600px) {
+  .content-text h2 {
+    font-size: 2.4rem;
+  }
+}
 @media (max-width: 1000px) {
   .content-text h2 {
     font-size: 3.2rem;
@@ -286,6 +329,11 @@ body {
   margin-bottom: 40px;
   opacity: 0.9;
   font-weight: 400;
+}
+@media (min-width: 1600px) {
+  .content-text p {
+    font-size: 0.8rem;
+  }
 }
 @media (max-width: 1000px) {
   .content-text p {
@@ -338,49 +386,14 @@ body {
 .cta-text span {
   color: #b64848;
 }
+@media (min-width: 1600px) {
+  .cta-text {
+    font-size: 1.2rem;
+  }
+}
 @media (max-width: 1000px) {
   .cta-text {
     font-size: 2.4rem;
-  }
-}
-
-.ui-element {
-  animation: slideInRight 1s ease-out;
-  transition: all 0.3s ease;
-  z-index: 2;
-  pointer-events: auto;
-  width: 20rem;
-}
-@media (min-width: 1920px) {
-  .ui-element {
-    width: 35rem;
-  }
-}
-@media (min-width: 1600px) {
-  .ui-element {
-    width: 30rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-}
-@media (max-width: 1600px) {
-  .ui-element {
-    width: 30rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-}
-@media (max-width: 1000px) {
-  .ui-element {
-    width: 25rem;
-    bottom: -10rem;
-  }
-}
-@media (max-width: 600px) {
-  .ui-element {
-    width: 20rem;
   }
 }
 
@@ -453,9 +466,6 @@ body {
   }
   .container {
     padding: 0 20px;
-  }
-  .content-section {
-    background-attachment: scroll;
   }
   .logo {
     top: 20px;
