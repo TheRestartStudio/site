@@ -1,6 +1,6 @@
 @import "scss/variable";
 
-html{
+html {
   font-size: calc(1vw + 0.5rem);
   @media (min-width: 1920px) {
     font-size: calc(0.7vw + 0.5rem);
@@ -9,13 +9,14 @@ html{
   margin: 0;
   background: #1E1E1E;
 }
-body{
+
+body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
 }
 
-.container{
+.container {
   max-width: 1920px;
   margin: 0 auto;
   @media (min-width: 1920px) {
@@ -29,13 +30,15 @@ body{
 
   }
 }
-.container-withoutPadding{
+
+.container-withoutPadding {
   max-width: 1920px;
   @media (min-width: 1920px) {
     margin: 0 auto;
   }
 }
-.container-withoutMargin{
+
+.container-withoutMargin {
   max-width: 1920px;
   @media (min-width: 1440px) {
     padding: 0 3rem;
@@ -47,122 +50,70 @@ body{
 }
 
 
-
-.section-hero{
+.section-hero {
   width: 100%;
   background: #fff;
-  .first{
+
+  .first {
     overflow: hidden;
     padding-top: 2rem;
-    .container{
+
+    .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .first-text{
+
+    .first-text {
       width: 60%;
-      .first-logo{
-        img{
+
+      .first-logo {
+        img {
           width: 15rem;
-          @media (min-width: 1920px) {
-            width: 20rem;
-          }
         }
       }
-      .first-vision{
+
+      .first-vision {
         white-space: nowrap;
         padding-top: 1rem;
-        font-size: 4rem;
-        span:first-child{
-          position: relative;
-          &::before{
-            font-size: 4rem;
-            content: '.';
-            position: absolute;
-            bottom: -20%;
-            left: 5%;
-          }
-        }
-        span:last-child{
-          position: relative;
-          &::before{
-            font-size: 6rem;
-            content: '.';
-            position: absolute;
-            bottom: -33%;
-            left: -14%;
-          }
-        }
+        font-size: 2.4rem;
       }
-      .first-of{
-        font-size: 7rem;
-        margin-left: -.2rem;
-        color: $color1;
+
+      .first-title{
+        span{
+          color: $color1;
+        }
       }
     }
 
-    .first-img{
-      width: 35%;
-      img{
+    .first-img {
+      width: 30%;
+
+      img {
         width: 100%;
         max-width: 25rem;
       }
+
       @media (min-width: 1920px) {
-        width: 40%;
-        img{
+        img {
           width: 100%;
           max-width: 35rem;
         }
       }
-      @media (max-width: 768px) {
-        width: 50%;
-        img{
-          max-width: 35rem;
-        }
-        transform: translateX(60%);
-      }
-      @media (max-width: 480px) {
+      @media (max-width: 1440px) {
         display: none;
       }
     }
   }
-  .hero-figna{
-    max-width: 30%;
-    @media (max-width: 768px) {
-      padding: 1rem 0;
-    }
-  }
-  .second{
-    .second-title{
-      text-align: center;
-      padding: 1rem 0;
-      @media (min-width: 1920px) {
-        font-size: 13rem;
-      }
-      @media (max-width: 1920px) {
-        font-size: 10rem;
-      }
-      @media (max-width: 1440px) {
-        font-size: 8rem;
-      }
-      @media (max-width: 1024px) {
-        font-size: 6rem;
-      }
-      @media (max-width: 768px) {
-        font-size: 5rem;
-      }
-      span{
-        color: $color1;
-      }
-    }
-    img{
-      max-width: 100%;
-      margin-bottom: -1rem;
-    }
+
+  .second-bg {
+    margin-top: 2rem;
+    max-width: 100%;
+    margin-bottom: -1rem;
   }
 }
 
-.title{
+.title {
   font-weight: 800;
   font-size: 6rem;
   margin: 0;
@@ -172,31 +123,35 @@ body{
     font-size: 6rem;
   }
   @media (max-width: 768px) {
-    font-size: 5rem;
+    font-size: 3.8rem;
   }
 }
-.bg{
+
+.bg {
   width: 100%;
 }
 
-.section-discord{
+.section-discord {
   overflow: hidden;
   background: #fff;
   position: relative;
   z-index: 1;
-  .discord-image{
+
+  .discord-image {
     width: 100%;
     object-fit: cover;
     margin-bottom: -1rem;
     position: relative;
     z-index: 1;
   }
-  .discord-box{
+
+  .discord-box {
     display: flex;
     align-items: center;
     padding-top: 3rem;
     margin-left: -.4rem;
-    img{
+
+    img {
       margin-left: 2rem;
       width: 6rem;
       height: 6rem;
@@ -209,25 +164,28 @@ body{
         display: none;
       }
     }
-    h1{
+
+    h1 {
       color: $color3;
     }
   }
-  .discord-button{
+
+  .discord-button {
     background: $color3;
     display: flex;
     align-items: center;
     color: $color2;
     padding: 0.8rem 1.8rem;
     margin-top: 1.4rem;
-    margin-bottom: 1.8rem;
     border: none;
     border-radius: 0.8rem;
-    p{
+
+    p {
       font-size: 2.4rem;
       margin: 0;
     }
-    img{
+
+    img {
       margin-left: 1.2rem;
       margin-top: .2rem;
       width: 3.8rem;
@@ -235,11 +193,11 @@ body{
   }
 }
 
-.section-kreativ{
+.section-kreativ {
   position: relative;
   overflow-x: hidden;
 
-  img{
+  img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -248,35 +206,46 @@ body{
     z-index: 1;
     object-fit: cover;
   }
-  .kreativ-text{
+
+  .kreativ-text {
     padding: 4rem 0 15rem 0;
     position: relative;
     color: $color2;
     z-index: 5;
-    @media (min-width: 1440px){
+    @media (min-width: 1440px) {
       padding: 2rem 0 10rem 0;
     }
-    @media (max-width: 1200px){
-      h1{
+    @media (max-width: 1200px) {
+      h1 {
         max-width: 70%;
       }
     }
-    @media (max-width: 700px){
-      h1{
+    @media (max-width: 700px) {
+      h1 {
         max-width: 100%;
       }
     }
-    span{
+
+    span {
       color: $color1;
     }
-    h1{
-      font-size: 4rem;
-      @media (min-width: 1440px){
+
+    h1 {
+      margin: 2.4rem 0 1.2rem 0;
+      font-size: 4.8rem;
+      @media (min-width: 1440px) {
         white-space: nowrap;
       }
-      @media (max-width: 480px){
-        font-size: 2.5rem;
+      @media (max-width: 1440px) {
+        font-size: 3.2rem;
       }
+      @media (max-width: 480px) {
+        font-size: 2.4rem;
+      }
+    }
+    h3{
+      font-size: 1.8rem;
+      font-weight: 500;
     }
   }
 }
@@ -291,49 +260,57 @@ body{
 
   .ticker-text {
     display: inline-block;
-    font-size: 8rem;
+    font-size: 8.4rem;
     color: $color3;
   }
 }
 
-.section-bridge{
+.section-bridge {
   width: 100%;
-  img{
+
+  img {
     width: 100%;
   }
 }
 
-.section-video{
+.section-video {
   max-width: 100%;
   padding-bottom: 5rem;
-  .container{
+
+  .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .video-content{
+
+  .video-content {
     width: 60%;
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
       width: 100%;
     }
-    h3{
+
+    h3 {
       color: $color2;
       margin-bottom: 2rem;
-      span{
+
+      span {
         color: $color1;
       }
     }
-    iframe{
+
+    iframe {
       width: 100%;
       height: 20rem;
     }
   }
-  .video-image{
+
+  .video-image {
     width: 30%;
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
       display: none;
     }
-    img{
+
+    img {
       width: 100%;
     }
   }
