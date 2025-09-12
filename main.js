@@ -1,69 +1,107 @@
-// Улучшенный параллакс эффект + параллакс от мыши
-let mouseX = 0;
-let mouseY = 0;
+class Slider {
+    constructor() {
+        this.track = document.getElementById('sliderTrack');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.dots = document.querySelectorAll('.dot');
+        this.slides = document.querySelectorAll('.slide'); // Добавляем получение всех слайдов
+        this.currentSlide = 0;
+        this.totalSlides = 3;
 
-// Отслеживание мыши
-document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const sections = document.querySelectorAll('.content-section');
-
-
-    // Эффект для hero секции
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
-        const heroRate = scrolled * 0.5;
-        heroSection.style.transform = `translateY(${heroRate}px)`;
+        this.init();
     }
+
+    init() {
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+
+        this.dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                this.currentSlide = parseInt(e.target.dataset.slide);
+                this.updateSlider();
+            });
+        });
+
+        // Устанавливаем активный слайд при инициализации
+        this.updateSlider();
+    }
+
+    updateSlider() {
+        // const translateX = -this.currentSlide * 100;
+        // this.track.style.transform = `translateX(${translateX}%)`;
+
+        // Обновляем активные точки
+        this.dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+
+        // Обновляем активные слайды
+        this.slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlider();
+    }
+
+    prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+        this.updateSlider();
+    }
+}
+
+// Инициализируем слайдер после загрузки страницы
+document.addEventListener('DOMContentLoaded', () => {
+    new Slider();
 });
 
-// // Параллакс от мыши для UI элементов
-// function updateMouseParallax() {
-//     const uiElements = document.querySelectorAll('.ui-element');
-//
-//     uiElements.forEach((element, index) => {
-//         // Проверяем, что элемент видим на экране (не на мобильных)
-//         if (window.innerWidth > 768) {
-//             const moveX = mouseX * (10 + index * 3);
-//             const moveY = mouseY * (8 + index * 2);
-//
-//             element.style.transform = `translateX(${moveX}px) translateY(${moveY}px)`;
-//         }
-//     });
-//
-//     requestAnimationFrame(updateMouseParallax);
-// }
-//
-// // Запускаем параллакс от мыши
-// updateMouseParallax();
+class AdvancedTicker {
+    constructor(containerId, textId) {
+        this.container = document.getElementById(containerId);
+        this.textElement = document.getElementById(textId);
+        this.speed = 7;
+        this.currentPosition = 0;
+        this.textWidth = 0;
+        this.containerWidth = 0;
+        this.animationId = null;
 
-// Анимация появления элементов при прокрутке
-const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-};
+        this.init();
+    }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+    init() {
+        this.updateDimensions();
+        // Начинаем с правого края контейнера (не экрана!)
+        this.currentPosition = this.containerWidth;
+        this.animate();
+
+        window.addEventListener('resize', () => this.updateDimensions());
+    }
+
+    updateDimensions() {
+        this.containerWidth = this.container.offsetWidth;
+        this.textWidth = this.textElement.offsetWidth;
+
+        if (this.textWidth === 0) {
+            setTimeout(() => this.updateDimensions(), 10);
         }
-    });
-}, observerOptions);
+    }
 
-// Наблюдение за элементами контента
-document.addEventListener('DOMContentLoaded', () => {
-    const contentElements = document.querySelectorAll('.content-text, .content-image');
+    animate() {
+        this.currentPosition -= this.speed;
 
-    contentElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(50px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.25, 0.25, 1)';
-        observer.observe(el);
-    });
+        // Когда текст полностью исчез слева, возвращаем справа
+        if (this.currentPosition <= -this.textWidth) {
+            this.currentPosition = this.containerWidth;
+        }
+
+        this.textElement.style.transform = `translateX(${this.currentPosition}px)`;
+        this.animationId = requestAnimationFrame(() => this.animate());
+    }
+}
+
+// Запускаем JS версию
+window.addEventListener('load', () => {
+    new AdvancedTicker('ticker-js', 'ticker-text-js');
 });

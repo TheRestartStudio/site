@@ -1,0 +1,164 @@
+@import "variable";
+
+
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  @media (max-width: 1024px) {
+    height: 30rem;
+  }
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 2rem 0 8rem 0;
+  position: relative;
+
+  &.active{
+    display: flex;
+  }
+
+  .slide-box{
+    width: 100%;
+
+    .slide-bg{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .slide-image{
+      width: 25rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 5;
+      transform: translateY(38%);
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+    .slide-vss{
+      width: 30rem;
+
+      @media (min-width: 1440px) {
+        width: 40rem;
+      }
+    }
+
+    .slide-text{
+      position: relative;
+      z-index: 5;
+      margin-top: 1rem;
+      .slide-title{
+        img{
+          width: 10rem;
+          @media (max-width: 1440px) {
+            display: none;
+          }
+        }
+        .slide-ui-element{
+          display: inline-block;
+          transform: rotate(-10deg);
+          color: $color1;
+        }
+        .slide-title-red{
+          color: $color1;
+        }
+      }
+      h1{
+        @media (min-width: 1440px){
+          white-space: nowrap;
+        }
+      }
+      p{
+        font-size: 2rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+
+.navigation{
+  width: 100%;
+  height: 5rem;
+  position: absolute;
+  z-index: 5;
+  bottom: 1rem;
+  left: 0;
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.arrow {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  background: none;
+}
+
+.arrow.prev:hover {
+  transform: translateX(-0.3rem);
+}
+.arrow.next:hover {
+  transform: scale(1.05);
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+.dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: $color2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: $color6;
+}
+
+.dot:hover {
+  background: $color6;
+}
